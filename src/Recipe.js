@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { API_ID, API_KEY } from './key'
 import RecipeCard from './RecipeCard';
+import './App.css'
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
 
 function Recipe() {
 
@@ -52,18 +54,28 @@ function Recipe() {
     }, [button])
     console.log(list);
     return <>
-        <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            onChange={handleSearchChange}
-            value={field.filter}
-            placeholder="Are you craving for Something? Find it here!"
-            id="filter" name="filter" label="Filter"
-        />
-        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={handleSearch}>
-            <SearchIcon />
-        </IconButton>
-
-        {loading ? 'Loading...' : <RecipeCard list={list} />}
+        <div className="SearchBar" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', marginTop: '2%' }}>
+            <form className='searchForm' style={{ marginBottom: '4%' }}>
+                <Paper>
+                    <InputBase
+                        sx={{ ml: 1, flex: 1 }}
+                        onChange={handleSearchChange}
+                        value={field.filter}
+                        placeholder="Are you craving for Something? Find it here!"
+                        id="filter" name="filter" label="Filter"
+                    />
+                    <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={handleSearch}>
+                        <SearchIcon />
+                    </IconButton>
+                </Paper></form>
+            {loading ? <div class="loader-wrapper">
+                <div class="loader-box">
+                    <div class="icon">
+                        <LocalDiningIcon style={{ width: '70%', height: '70%' }} />
+                    </div>
+                </div>
+            </div> : <RecipeCard list={list} />}
+        </div>
     </>;
 }
 

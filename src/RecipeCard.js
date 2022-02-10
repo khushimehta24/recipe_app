@@ -24,12 +24,12 @@ function RecipeCard({ list }) {
     console.log(search);
 
     return <>
-        <Grid container spacing={4} sx={{ margingLeft: '50px' }}>
+        <Grid container spacing={4} sx={{ margingLeft: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {
                 list.map((recipeFiltered) => {
                     return <>
-                        <Grid item>
-                            <Card sx={{ display: 'flex', width: '450px', padding: '12px' }}>
+                        <Grid item md={4} xs={12} sm={12}>
+                            <Card sx={{ display: 'flex', width: '90%', padding: '12px' }}>
                                 <CardMedia
                                     component="img"
                                     sx={{ width: 151, borderRadius: '3.5px' }}
@@ -47,7 +47,7 @@ function RecipeCard({ list }) {
                                     </CardContent>
                                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
                                         {/* <Button onClick={() => { handleIngrClick(recipeFiltered.recipe.label) }} sx={{ fontSize: '14px', fontWeight: 'bold' }} target='_blank'>Know More</Button> */}
-                                        <Link to={{ pathname: "/ingredients", state: { list: list, name: recipeFiltered.recipe.label } }} sx={{ fontSize: '14px', fontWeight: 'bold' }}>Know More</Link>
+                                        <Link to={"/ingredients"} state={{ list: list, name: recipeFiltered.recipe.label }} sx={{ fontSize: '14px', fontWeight: 'bold' }}>Know More</Link>
                                     </Box>
                                 </Box>
                             </Card>
