@@ -1,14 +1,8 @@
-import { Grid, Paper } from '@mui/material';
+import { Paper } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-import { API_ID, API_KEY } from './key'
 import RecipeCard from './RecipeCard';
 import './App.css'
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
@@ -27,7 +21,6 @@ function Recipe() {
         const value = e.target.value
         setField({ ...field, [name]: value })
     }
-    console.log(field);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -52,7 +45,6 @@ function Recipe() {
             })
             .catch(error => console.log('error', error));
     }, [button])
-    console.log(list);
     return <>
         <div className="SearchBar" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', marginTop: '2%' }}>
             <form className='searchForm' style={{ marginBottom: '4%' }}>
@@ -68,9 +60,9 @@ function Recipe() {
                         <SearchIcon />
                     </IconButton>
                 </Paper></form>
-            {loading ? <div class="loader-wrapper">
-                <div class="loader-box">
-                    <div class="icon">
+            {loading ? <div className="loader-wrapper">
+                <div className="loader-box">
+                    <div className="icon">
                         <LocalDiningIcon style={{ width: '70%', height: '70%' }} />
                     </div>
                 </div>

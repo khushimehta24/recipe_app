@@ -1,34 +1,22 @@
-import React, { useState } from 'react';
-import { Button, Grid } from '@mui/material';
+import React from 'react';
+import { Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
 import './App.css'
-import { useNavigate } from "react-router-dom";
-import Ingredients from './Ingredients';
 import { Link } from "react-router-dom";
 
-
 function RecipeCard({ list }) {
-    const theme = useTheme();
-    const navigate = useNavigate();
-    const [search, setSearch] = useState([])
-    const handleIngrClick = (name) => {
-        console.log(name);
-        const search2 = list.filter((searchItem) => searchItem.recipe.label === name)
-        setSearch(search2[0].recipe.ingredientLines);
-    }
-    console.log(search);
+
 
     return <>
         <Grid container spacing={4} sx={{ margingLeft: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             {
                 list.map((recipeFiltered) => {
                     return <>
-                        <Grid item md={4} xs={12} sm={12}>
+                        <Grid item md={4} xs={12} sm={12} key={recipeFiltered.recipe.label}>
                             <Card sx={{ display: 'flex', width: '90%', padding: '12px' }}>
                                 <CardMedia
                                     component="img"
